@@ -138,6 +138,8 @@ open class PulleyViewController: UIViewController {
     fileprivate var lastDragTargetContentOffset: CGPoint = CGPoint.zero
 
     // Public
+    
+    public var drawerContentContainerSidePadding: CGFloat = 0.0
 
     /// The current content view controller (shown behind the drawer).
     public fileprivate(set) var primaryContentViewController: UIViewController! {
@@ -603,7 +605,7 @@ open class PulleyViewController: UIViewController {
             drawerScrollView.frame = CGRect(x: safeAreaLeftInset, y: self.view.bounds.height - adjustedTopInset, width: self.view.bounds.width - safeAreaLeftInset - safeAreaRightInset, height: adjustedTopInset)
         }
         
-        drawerContentContainer.frame = CGRect(x: 0, y: drawerScrollView.bounds.height - lowestStop, width: drawerScrollView.bounds.width, height: drawerScrollView.bounds.height + bounceOverflowMargin)
+        drawerContentContainer.frame = CGRect(x: self.drawerContentContainerSidePadding, y: drawerScrollView.bounds.height - lowestStop, width: drawerScrollView.bounds.width - (self.drawerContentContainerSidePadding * 2), height: drawerScrollView.bounds.height + bounceOverflowMargin)
         drawerBackgroundVisualEffectView?.frame = drawerContentContainer.frame
         drawerShadowView.frame = drawerContentContainer.frame
         drawerScrollView.contentSize = CGSize(width: drawerScrollView.bounds.width, height: (drawerScrollView.bounds.height - lowestStop) + drawerScrollView.bounds.height - safeAreaBottomInset)
