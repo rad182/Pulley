@@ -1036,7 +1036,7 @@ extension PulleyViewController: UIScrollViewDelegate {
                 (drawerContentViewController as? PulleyDrawerViewControllerDelegate)?.makeUIAdjustmentsForFullscreen?(progress: progress, bottomSafeArea: getBottomSafeArea())
                 (primaryContentViewController as? PulleyPrimaryContentControllerDelegate)?.makeUIAdjustmentsForFullscreen?(progress: progress, bottomSafeArea: getBottomSafeArea())
                 
-                backgroundDimmingView.alpha = progress * backgroundDimmingOpacity
+                backgroundDimmingView.alpha = progress > 1.0 ? backgroundDimmingOpacity : progress * backgroundDimmingOpacity
                 
                 backgroundDimmingView.isUserInteractionEnabled = true
             }
