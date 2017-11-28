@@ -908,7 +908,11 @@ open class PulleyViewController: UIViewController {
         {
             if gestureRecognizer.state == .ended
             {
-                self.setDrawerPosition(position: .collapsed, animated: true)
+                if self.supportedPositions.contains(.partiallyRevealed) {
+                    self.setDrawerPosition(position: .partiallyRevealed, animated: true)
+                } else {
+                    self.setDrawerPosition(position: .collapsed, animated: true)
+                }
             }
         }
     }
